@@ -1,0 +1,44 @@
+Basic measures (DAX)
+
+1.Gross Sales = SUM(Fact[GrossSales])
+
+2.COGS = SUM(Fact[COGS])
+
+3.Gross Profit = SUM(Fact[GrossProfit])
+
+4.Operational Cost = SUM(Fact[OperationalCost])
+
+5.Net Profit = SUM(Fact[NetProfit])
+
+6.Profit Margin % = DIVIDE([Net Profit], [Gross Sales], 0)
+
+7.Gross Profit Margin % = 
+  DIVIDE(
+      [Total Gross Profit],
+      [Total Gross Sales],
+      0
+  )
+
+8. Profit Margin % = 
+DIVIDE(
+    [Total Net Profit],
+    [Total Gross Sales],
+    0
+)
+
+9. Total Gross Profit = SUM(FactSales[GrossProfit])
+10. Total Gross Sales = SUM(FactSales[GrossSales])
+11. Total Net Profit = SUM(FactSales[NetProfit])
+12. Total Operational Costs = SUM(FactSales[OperationalCost])
+
+13. DimDate = 
+ADDCOLUMNS (
+    CALENDAR (DATE(2019,1,1), DATE(2021,12,31)),
+    "Year", YEAR([Date]),
+    "MonthNumber", MONTH([Date]),
+    "Month", FORMAT([Date], "MMM"),
+    "Quarter", "Q" & FORMAT([Date], "Q"),
+    "Day", DAY([Date]),
+    "Weekday", FORMAT([Date], "dddd")
+)
+
